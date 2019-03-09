@@ -40,7 +40,7 @@
         <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="248,180,14,126" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Порт сервера</Run>
         </TextBlock>
-        
+
         <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_Port" Margin="277,203,42,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
         <Button x:Name="ConnectButton" Content="Соединение" IsDefault="True" Click="Connect_Button_Click" Margin="145,262,148,33" RenderTransformOrigin="0.464,0.105" Grid.Column="3" />
