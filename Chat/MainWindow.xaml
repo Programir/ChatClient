@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Chat" Height="350" Width="525">
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="462*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="PressButton" Content="Нажми кнопку" IsDefault="True" Click="press_Button_Click" Margin="164,137,205,137" RenderTransformOrigin="0.464,0.105" Grid.Column="2" />
     </Grid>
 </Window>

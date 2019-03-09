@@ -15,14 +15,18 @@ using System.Windows.Shapes;
 
 namespace Chat
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void press_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Кнопка нажата");
+        }
+        
     }
 }
