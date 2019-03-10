@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Chat" Height="350" Width="525">
 
-    <Grid Margin="0,-5,-8,-7" Height="332" VerticalAlignment="Top">
+    <Grid Margin="0,-5,-6,-7" Height="332" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
@@ -19,33 +19,33 @@
         <Run FontSize="16" Foreground="Black" FontWeight="Bold">Простой текстовый чат</Run>
         </TextBlock>
 
-        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="157,56,105,250" Grid.Column="3">
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="211,56,51,250" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Ваш логин</Run>
         </TextBlock>
 
-        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="TextBox_Login" Margin="130,78,78,228" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
+        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="TextBox_Login" Margin="190,78,18,228" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
-        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="158,118,104,188" Grid.Column="3">
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="210,118,52,188" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Ваш пароль</Run>
         </TextBlock>
 
-        <PasswordBox PasswordChar="*" MinHeight="30" Margin="130,0,79,161" Height="26" VerticalAlignment="Bottom" Grid.Column="3" />
+        <PasswordBox PasswordChar="*" MinHeight="30" Margin="192,0,17,161" Height="26" VerticalAlignment="Bottom" Grid.Column="3" />
 
-        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="110,177,152,129" Grid.Column="3">
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="162,177,100,129" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Адрес сервера</Run>
         </TextBlock>
 
-        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_IP" Margin="93,203,136,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
+        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_IP" Margin="141,203,88,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
-        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="248,180,14,126" Grid.Column="3">
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="296,180,-34,126" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Порт сервера</Run>
         </TextBlock>
 
-        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_Port" Margin="277,203,42,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
+        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_Port" Margin="327,203,-8,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
         <Button x:Name="ConnectButton" Content="Соединение" IsDefault="True" Click="Connect_Button_Click" Margin="145,262,148,33" RenderTransformOrigin="0.464,0.105" Grid.Column="3" />
 
-        <Button x:Name="EscapeButton" Content="Выход" IsCancel="True" Click="Escape_Button_Click" Margin="296,263,-6,30" RenderTransformOrigin="0.464,0.105" Grid.Column="3" />
+        <Button x:Name="EscapeButton" Content="Выход" IsCancel="True" Click="Escape_Button_Click" Margin="314,263,-24,30" RenderTransformOrigin="0.464,0.105" Grid.Column="3" />
 
     </Grid>
 </Window>

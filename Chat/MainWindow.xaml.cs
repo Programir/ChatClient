@@ -23,10 +23,19 @@ namespace Chat
             InitializeComponent();
         }
 
+        string Login;
+        string Password;
+        string IP;
+        int Port;
+
         private void TextBox_Login(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            MessageBox.Show(textBox.Text);
+            while (null == textBox.Text)
+            {
+                MessageBox.Show("Имя пользователя не может быть пустым!");
+            }
+
         }
 
         private void Server_IP(object sender, TextChangedEventArgs e)
@@ -38,7 +47,12 @@ namespace Chat
         private void Server_Port(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            MessageBox.Show(textBox.Text);
+            
+            int.TryParse(textBox.Text, out Port);
+            if (Port<1 || Port > 65535)
+            {
+                MessageBox.Show("Порт сервера должен быть числом в пределах от 1 до 65535!");
+            }
         }
 
         private void Connect_Button_Click(object sender, RoutedEventArgs e)
