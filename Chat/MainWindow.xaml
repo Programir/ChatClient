@@ -23,7 +23,7 @@
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Ваш логин</Run>
         </TextBlock>
 
-        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="TextBox_Login" Margin="190,78,18,228" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
+        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Input_TextBox_Login" Margin="190,78,18,228" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
         <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="210,118,52,188" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Ваш пароль</Run>
@@ -35,13 +35,13 @@
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Адрес сервера</Run>
         </TextBlock>
 
-        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_IP" Margin="141,203,88,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
+        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Input_Server_IP" Margin="141,203,88,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
         <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="296,180,-34,126" Grid.Column="3">
         <Run FontSize="12" Foreground="Black" FontWeight="Bold">Порт сервера</Run>
         </TextBlock>
 
-        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Server_Port" Margin="327,203,-8,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
+        <TextBox MaxLength="50" TextWrapping="Wrap" TextChanged="Input_Server_Port" Margin="327,203,-8,103" Grid.Column="3" RenderTransformOrigin="0.403,0.383"></TextBox>
 
         <Button x:Name="ConnectButton" Content="Соединение" IsDefault="True" Click="Connect_Button_Click" Margin="145,262,148,33" RenderTransformOrigin="0.464,0.105" Grid.Column="3" />
 
