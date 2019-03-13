@@ -67,8 +67,7 @@ namespace Chat
                 MessageBox.Show("Порт сервера должен быть числом в пределах от 1 до 65535!");
             }
 
- //           while (!Regex.IsMatch(ServerIP, @"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"))
-            if (!IPAddress.TryParse(Server_IP, out ipserv))
+             if (!IPAddress.TryParse(Server_IP, out ipserv))
             {
                 MessageBox.Show("Введите правильный IP адрес!");
             }
