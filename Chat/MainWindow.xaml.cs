@@ -41,6 +41,7 @@ namespace Chat
 
         }
 
+     
         private void Input_Server_IP(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -57,20 +58,34 @@ namespace Chat
         private void Connect_Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Кнопка соединения нажата");
-            CheckInput(Port, Server_IP);
+            if (CheckInput(Port, Server_IP))
+            {
+                //TODO CONNECT METHOD
+            }
+            GoToChatWindow();
         }
 
-        private void CheckInput(int Port, string Server_IP)
+        private bool CheckInput(int Port, string Server_IP)
         {
             if (Port < 1 || Port > 65535)
             {
                 MessageBox.Show("Порт сервера должен быть числом в пределах от 1 до 65535!");
+                return false;
             }
-
-             if (!IPAddress.TryParse(Server_IP, out ipserv))
+            
+       /*      if (!IPAddress.TryParse(Server_IP, out ipserv))
             {
                 MessageBox.Show("Введите правильный IP адрес!");
-            }
+                return false;
+            } */
+            return true;
+        }
+
+        private void GoToChatWindow()
+        {
+            ChatWindow chatWindow = new ChatWindow();
+            chatWindow.Show();
+            this.Close();
         }
 
         private void Escape_Button_Click(object sender, RoutedEventArgs e)
