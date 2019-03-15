@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace Chat
 {
-    
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -41,17 +41,16 @@ namespace Chat
 
         }
 
-     
+
         private void Input_Server_IP(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            //MessageBox.Show(textBox.Text);
+            Server_IP = textBox.Text;
         }
 
         private void Input_Server_Port(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            
             int.TryParse(textBox.Text, out Port);
         }
 
@@ -61,8 +60,9 @@ namespace Chat
             if (CheckInput(Port, Server_IP))
             {
                 //TODO CONNECT METHOD
+                GoToChatWindow();
             }
-            GoToChatWindow();
+
         }
 
         private bool CheckInput(int Port, string Server_IP)
@@ -72,12 +72,12 @@ namespace Chat
                 MessageBox.Show("Порт сервера должен быть числом в пределах от 1 до 65535!");
                 return false;
             }
-            
-       /*      if (!IPAddress.TryParse(Server_IP, out ipserv))
+
+            if (!IPAddress.TryParse(Server_IP, out ipserv))
             {
                 MessageBox.Show("Введите правильный IP адрес!");
                 return false;
-            } */
+            }
             return true;
         }
 
