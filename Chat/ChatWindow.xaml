@@ -14,8 +14,15 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        
-        <Label Content="Окно чата" FontSize="16" HorizontalAlignment="Left" Width="85" Margin="216,15,-300,277" Grid.Column="3" />
-        
+
+        <Label Content="Чат" FontSize="16" HorizontalAlignment="Left" Width="44" Margin="244,5,-278,296" Grid.Column="3" />
+
+        <ListBox Name="MessageList" ItemsSource="{Binding MessageList}" Grid.Column="3" Margin="22,38,-68,116" Height="auto" />
+
+        <TextBox MaxLength="500" TextChanged="Message_TextChanged" Margin="23,231,-69,51" Grid.Column="3"/>
+
+        <Button x:Name="ConnectButton" Content="Отправить сообщение" IsDefault="True" Click="Connect_Button_Click" Margin="25,288,268,7" RenderTransformOrigin="0.464,0.105" Grid.Column="3" />
+
     </Grid>
+
 </Window>

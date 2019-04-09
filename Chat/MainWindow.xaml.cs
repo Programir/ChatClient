@@ -14,14 +14,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Controls;
 using System.Windows.Shapes;
+using Chat.ChatServer;
 
 namespace Chat
 {
 
     public partial class MainWindow : Window
     {
+        private IServer _chatServerClient;
+
         public MainWindow()
         {
+#if DEBUG
+            Login = "admin";
+            Password = "12345";
+            Server_IP = "127.0.0.1";
+            Port = 1024;
+#endif
+
             InitializeComponent();
         }
 
@@ -34,13 +44,13 @@ namespace Chat
         private void Input_TextBox_Login(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            while (null == textBox.Text)
-            {
-                MessageBox.Show("Имя пользователя не может быть пустым!");
-            }
-
+            Login = textBox.Text;
         }
 
+        private void Input_Password(object sender, RoutedEventArgs e)
+        {
+            Password = passwordBox.Password;
+        }
 
         private void Input_Server_IP(object sender, TextChangedEventArgs e)
         {
@@ -57,7 +67,7 @@ namespace Chat
         private void Connect_Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Кнопка соединения нажата");
-            if (CheckInput(Port, Server_IP))
+            if (CheckInput(Port, Server_IP, Login))
             {
                 //TODO CONNECT METHOD
                 GoToChatWindow();
@@ -65,8 +75,14 @@ namespace Chat
 
         }
 
-        private bool CheckInput(int Port, string Server_IP)
+        private bool CheckInput(int Port, string Server_IP, string Login)
         {
+            if (String.IsNullOrWhiteSpace(Login))
+            {
+                MessageBox.Show("Имя пользователя не может быть пустым!");
+                return false;
+            }
+
             if (Port < 1 || Port > 65535)
             {
                 MessageBox.Show("Порт сервера должен быть числом в пределах от 1 до 65535!");
@@ -83,12 +99,17 @@ namespace Chat
 
         private void GoToChatWindow()
         {
+            _chatServerClient = new ServerClient("NetTcpBinding_IServer", $"net.tcp://{Server_IP}:{Port}/Server");
+            var isValidUser = _chatServerClient.CheckUser(Login, Password);
+            if (!isValidUser)
+                return;
+
             ChatWindow chatWindow = new ChatWindow();
             chatWindow.Show();
             this.Close();
         }
 
-        private void Escape_Button_Click(object sender, RoutedEventArgs e)
+        private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
