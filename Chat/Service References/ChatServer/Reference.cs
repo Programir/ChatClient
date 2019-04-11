@@ -8,6 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Net.Sockets;
+using System.ServiceModel;
+using System.Windows;
+
 namespace Chat.ChatServer {
     
     
@@ -49,7 +53,7 @@ namespace Chat.ChatServer {
                 base(binding, remoteAddress) {
         }
         
-        public bool CheckUser(string username, string password) {
+        public bool CheckUser(string username, string password) {          
             return base.Channel.CheckUser(username, password);
         }
         

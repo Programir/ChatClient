@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using Chat.ChatServer;
+using System.ServiceModel;
+using System.Net.Sockets;
 
 namespace Chat
 {
@@ -66,10 +68,8 @@ namespace Chat
 
         private void Connect_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Кнопка соединения нажата");
-            if (CheckInput(Port, Server_IP, Login))
+            if (CheckInput(Port, Server_IP, Login) & CheckConnection())
             {
-                //TODO CONNECT METHOD
                 GoToChatWindow();
             }
 
@@ -97,18 +97,39 @@ namespace Chat
             return true;
         }
 
+        private bool CheckConnection()
+        {
+            using (TcpClient tcpClient = new TcpClient())
+            {
+                try
+                {
+                    tcpClient.Connect(Server_IP, Port);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Невозможно соединиться с сервером по адресу {Server_IP}:{Port}. Проверьте правильность настроек подключения.");
+                    return false;
+                }
+            }
+        }
+
         private void GoToChatWindow()
         {
             _chatServerClient = new ServerClient("NetTcpBinding_IServer", $"net.tcp://{Server_IP}:{Port}/Server");
             var isValidUser = _chatServerClient.CheckUser(Login, Password);
             if (!isValidUser)
+            {
+                MessageBox.Show("Учетные данные неверны. Проверьте раскладку, а также не включена ли клавиша Caps Lock.");
                 return;
+            }
 
             ChatWindow chatWindow = new ChatWindow();
             chatWindow.Show();
             this.Close();
         }
 
+        
         private void Exit_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

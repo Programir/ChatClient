@@ -16,6 +16,15 @@ namespace Chat
             InitializeComponent();
         }
 
-        
+        private void Message_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Connect_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
