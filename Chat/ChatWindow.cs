@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace Chat
 {
     public partial class ChatWindow : Window
     {
+        private DateTime newestMessageDate;
         public ChatWindow()
         {
             InitializeComponent();

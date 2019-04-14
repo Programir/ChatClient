@@ -37,11 +37,11 @@ namespace Chat
             InitializeComponent();
         }
 
-        string Login;
-        string Password;
-        string Server_IP;
-        IPAddress ipserv;
-        int Port;
+        internal string Login;
+        private string Password;
+        private string Server_IP;
+        private IPAddress ipserv;
+        private int Port;
 
         private void Input_TextBox_Login(object sender, TextChangedEventArgs e)
         {
