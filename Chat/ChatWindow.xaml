@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBox MaxLength="500" TextChanged="Message_TextChanged" Grid.Column="0" Margin="0, 0, 5, 0" />
-            <Button x:Name="ConnectButton" Content="Отправить сообщение" IsDefault="True" Click="Connect_Button_Click" Grid.Column="1" />
+            <Button x:Name="SendButton" Content="Отправить сообщение" IsDefault="True" Click="Send_Button_Click" Grid.Column="1" />
 
         </Grid>
         

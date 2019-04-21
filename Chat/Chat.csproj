@@ -57,6 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IClient.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Service References\ChatServer\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

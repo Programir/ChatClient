@@ -23,7 +23,7 @@ namespace Chat
 
     public partial class MainWindow : Window
     {
-        private IServer _chatServerClient;
+        internal static IServer _chatServerClient;
 
         public MainWindow()
         {
@@ -37,7 +37,7 @@ namespace Chat
             InitializeComponent();
         }
 
-        internal string Login;
+        internal static string Login;
         private string Password;
         private string Server_IP;
         private IPAddress ipserv;
