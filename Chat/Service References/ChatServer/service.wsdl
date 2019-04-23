@@ -14,6 +14,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ChatServer" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServer_CheckUser_InputMessage">
@@ -22,10 +23,30 @@
   <wsdl:message name="IServer_CheckUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServer_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="IServer_SendMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServer_GetNewMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewMessages" />
+  </wsdl:message>
+  <wsdl:message name="IServer_GetNewMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewMessagesResponse" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IServer">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CheckUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServer/CheckUser" message="tns:IServer_CheckUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServer/CheckUserResponse" message="tns:IServer_CheckUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServer/SendMessage" message="tns:IServer_SendMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServer/SendMessageResponse" message="tns:IServer_SendMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetNewMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServer/GetNewMessages" message="tns:IServer_GetNewMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServer/GetNewMessagesResponse" message="tns:IServer_GetNewMessages_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IServer" type="tns:IServer">
@@ -34,6 +55,24 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="CheckUser">
       <soap12:operation soapAction="http://tempuri.org/IServer/CheckUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IServer/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewMessages">
+      <soap12:operation soapAction="http://tempuri.org/IServer/GetNewMessages" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

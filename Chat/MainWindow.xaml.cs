@@ -23,7 +23,7 @@ namespace Chat
 
     public partial class MainWindow : Window
     {
-        internal static IServer _chatServerClient;
+        private IServer _chatServerClient;
 
         public MainWindow()
         {
@@ -39,9 +39,9 @@ namespace Chat
 
         internal static string Login;
         private string Password;
-        private string Server_IP;
+        private string Server_IP = "192.168.0.231";
         private IPAddress ipserv;
-        private int Port;
+        private int Port = 1024;
 
         private void Input_TextBox_Login(object sender, TextChangedEventArgs e)
         {
@@ -69,8 +69,16 @@ namespace Chat
         private void Connect_Button_Click(object sender, RoutedEventArgs e)
         {
             if (CheckInput(Port, Server_IP, Login) & CheckConnection())
+            //if (CheckInput(Port, Server_IP, Login) & CheckConnection())
             {
-                GoToChatWindow();
+                try
+                {
+                    GoToChatWindow();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
         }
@@ -113,7 +121,7 @@ namespace Chat
                 }
             }
         }
-
+        
         private void GoToChatWindow()
         {
             _chatServerClient = new ServerClient("NetTcpBinding_IServer", $"net.tcp://{Server_IP}:{Port}/Server");
@@ -124,7 +132,7 @@ namespace Chat
                 return;
             }
 
-            ChatWindow chatWindow = new ChatWindow();
+            ChatWindow chatWindow = new ChatWindow(_chatServerClient);
             chatWindow.Show();
             this.Close();
         }

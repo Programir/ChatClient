@@ -8,12 +8,87 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Net.Sockets;
-using System.ServiceModel;
-using System.Windows;
-
 namespace Chat.ChatServer {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/ChatServer")]
+    [System.SerializableAttribute()]
+    public partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SentDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime SentDateTime {
+            get {
+                return this.SentDateTimeField;
+            }
+            set {
+                if ((this.SentDateTimeField.Equals(value) != true)) {
+                    this.SentDateTimeField = value;
+                    this.RaisePropertyChanged("SentDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChatServer.IServer", SessionMode=System.ServiceModel.SessionMode.Required)]
@@ -24,6 +99,18 @@ namespace Chat.ChatServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/CheckUser", ReplyAction="http://tempuri.org/IServer/CheckUserResponse")]
         System.Threading.Tasks.Task<bool> CheckUserAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/SendMessage", ReplyAction="http://tempuri.org/IServer/SendMessageResponse")]
+        void SendMessage(string text, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/SendMessage", ReplyAction="http://tempuri.org/IServer/SendMessageResponse")]
+        System.Threading.Tasks.Task SendMessageAsync(string text, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/GetNewMessages", ReplyAction="http://tempuri.org/IServer/GetNewMessagesResponse")]
+        Chat.ChatServer.Message[] GetNewMessages(System.DateTime lastMessageDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServer/GetNewMessages", ReplyAction="http://tempuri.org/IServer/GetNewMessagesResponse")]
+        System.Threading.Tasks.Task<Chat.ChatServer.Message[]> GetNewMessagesAsync(System.DateTime lastMessageDate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -53,12 +140,28 @@ namespace Chat.ChatServer {
                 base(binding, remoteAddress) {
         }
         
-        public bool CheckUser(string username, string password) {          
+        public bool CheckUser(string username, string password) {
             return base.Channel.CheckUser(username, password);
         }
         
         public System.Threading.Tasks.Task<bool> CheckUserAsync(string username, string password) {
             return base.Channel.CheckUserAsync(username, password);
+        }
+        
+        public void SendMessage(string text, string username) {
+            base.Channel.SendMessage(text, username);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(string text, string username) {
+            return base.Channel.SendMessageAsync(text, username);
+        }
+        
+        public Chat.ChatServer.Message[] GetNewMessages(System.DateTime lastMessageDate) {
+            return base.Channel.GetNewMessages(lastMessageDate);
+        }
+        
+        public System.Threading.Tasks.Task<Chat.ChatServer.Message[]> GetNewMessagesAsync(System.DateTime lastMessageDate) {
+            return base.Channel.GetNewMessagesAsync(lastMessageDate);
         }
     }
 }

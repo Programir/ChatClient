@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chat.ChatServer;
+using System;
 using System.Collections.Generic;
 
 namespace Chat
@@ -7,6 +8,5 @@ namespace Chat
     {
         event EventHandler<Message> NewMessage;
         void SendMessage(string text);
-        //IEnumerable<Message> GetNewMessages(DateTime newMessageDate);
     }
 }

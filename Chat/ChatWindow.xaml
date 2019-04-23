@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="Chat" Height="350" Width="525">
 
     <Grid>
@@ -16,7 +17,17 @@
 
         <Label Content="Чат" FontSize="16" Grid.Row="0" />
 
-        <ListBox Name="MessageList" ItemsSource="{Binding MessagesList}" Grid.Row="1" />
+        <ListBox Name="MessageList" ItemsSource="{Binding MessagesList}" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding SentDateTime}" Margin="0,0,45,0" />
+                        <Label Content="{Binding Username}" Margin="0,0,45,0" />
+                        <Label Content="{Binding Text}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <Grid Grid.Row="2" Margin="5">
             <Grid.ColumnDefinitions>
@@ -24,11 +35,11 @@
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBox MaxLength="500" TextChanged="Message_TextChanged" Grid.Column="0" Margin="0, 0, 5, 0" />
-            <Button x:Name="SendButton" Content="Отправить сообщение" IsDefault="True" Click="Send_Button_Click" Grid.Column="1" />
+            <TextBox MaxLength="500" Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Grid.Column="0" Margin="0, 0, 5, 0" />
+            <Button x:Name="SendButton" Content="Отправить сообщение" IsDefault="True" Click="SendButton_Click" Grid.Column="1" />
 
         </Grid>
-        
+
     </Grid>
 
 </Window>
